@@ -32,7 +32,7 @@ days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
 scores = [2.37, 2.36, 2.43, 2.34, 2.71, 2.81, 2.68]
 
 fig, ax = plt.subplots(figsize=(10, 6))
-bars = ax.bar(days, scores, color=ACID_LIME, edgecolor=DEEP_GREEN, linewidth=1.5)
+bars = ax.bar(days, scores, color=DEEP_GREEN, edgecolor=DEEP_GREEN, linewidth=1.5)
 
 ax.set_ylabel('AVG SCORE', fontweight='bold', labelpad=10)
 ax.set_ylim(0, 5)
@@ -51,7 +51,16 @@ months_labels = ['Oct 24', 'Feb 25', 'Jun 25', 'Oct 25', 'Feb 26']
 texture_avg = [2.00, 2.14, 2.50, 2.43, 2.11, 2.00, 2.29, 3.11, 2.50, 2.20, 2.00, 2.83, 2.50, 2.67, 2.60, 3.00, 3.33]
 
 fig, ax = plt.subplots(figsize=(12, 6))
-ax.scatter(months_idx, texture_avg, color=DEEP_GREEN, s=100, zorder=3)
+ax.scatter(
+    months_idx, 
+    texture_avg, 
+    facecolors=ACID_LIME, 
+    edgecolors=DEEP_GREEN, 
+    linewidths=1.5,   # Adjust thickness of the teal border here
+    s=100, 
+    zorder=3
+)
+
 z = np.polyfit(months_idx, texture_avg, 1)
 p = np.poly1d(z)
 ax.plot(months_idx, p(months_idx), color=DEEP_GREEN, linewidth=4, zorder=2)
